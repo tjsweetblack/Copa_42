@@ -1,19 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const logo = document.querySelector('.logo');
-  const registrationForm = document.querySelector('.registration-form');
-  const logoSection = document.querySelector('.logo-section');
-  const logoSection2 = document.querySelector('.logo-section2');
-  
-  // Start the logo shrinking transition after the page is fully loaded
-  window.onload = function() {
-    setTimeout(function() {
-      logo.classList.add('shrink');
-      registrationForm.classList.add('visible'); // Make form visible after logo transition
-      logoSection.style.zIndex = '0'; // Lower logo z-index after form is visible
-      
-    }, 1000); // Adjust timing to match your transition
-  };
-
   const firstNameInput = document.querySelector('.first-name');
   const lastNameInput = document.querySelector('.last-name');
   const usernameInput = document.querySelector('.username');
@@ -66,10 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (usernameInput.value) {
       sessionStorage.setItem('username', usernameInput.value);
       document.querySelector('.username-section').classList.add('fold-up');
+      successMessage.style.marginTop = '0';
       successMessage.style.display = 'flex';
-      setTimeout(function() {
-        successMessage.style.opacity = '1';
-      }, 100); // Delay showing success message for better UX
     }
   });
 });
