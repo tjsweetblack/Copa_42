@@ -1,75 +1,65 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const logo = document.querySelector('.logo');
-  const registrationForm = document.querySelector('.registration-form');
-  const logoSection = document.querySelector('.logo-section');
-  const logoSection2 = document.querySelector('.logo-section2');
-  
-  // Start the logo shrinking transition after the page is fully loaded
-  window.onload = function() {
-    setTimeout(function() {
-      logo.classList.add('shrink');
-      registrationForm.classList.add('visible'); // Make form visible after logo transition
-      logoSection.style.zIndex = '0'; // Lower logo z-index after form is visible
-      
-    }, 1000); // Adjust timing to match your transition
-  };
-
-  const firstNameInput = document.querySelector('.first-name');
-  const lastNameInput = document.querySelector('.last-name');
-  const usernameInput = document.querySelector('.username');
-  const firstNameNextButton = document.querySelector('.next-button.first-name');
-  const lastNameNextButton = document.querySelector('.next-button.last-name');
-  const usernameNextButton = document.querySelector('.next-button.username');
-  const successMessage = document.querySelector('.success');
-
-  firstNameInput.addEventListener('input', function() {
-    if (firstNameInput.value) {
-      document.querySelector('.icon-user').classList.add('next');
+$('.email').on("change keyup paste",
+  function(){
+    if($(this).val()){
+      $('.icon-paper-plane').addClass("next");
     } else {
-      document.querySelector('.icon-user').classList.remove('next');
+      $('.icon-paper-plane').removeClass("next");
     }
-  });
+  }
+);
 
-  firstNameNextButton.addEventListener('click', function() {
-    if (firstNameInput.value) {
-      sessionStorage.setItem('firstName', firstNameInput.value);
-      document.querySelector('.first-name-section').classList.add('fold-up');
-      document.querySelector('.last-name-section').classList.remove('folded');
-    }
-  });
+$('.next-button').hover(
+  function(){
+    $(this).css('cursor', 'pointer');
+  }
+);
 
-  lastNameInput.addEventListener('input', function() {
-    if (lastNameInput.value) {
-      document.querySelector('.icon-user').classList.add('next');
+$('.next-button.email').click(
+  function(){
+    console.log("Something");
+    $('.email-section').addClass("fold-up");
+    $('.password-section').removeClass("folded");
+  }
+);
+
+$('.password').on("change keyup paste",
+  function(){
+    if($(this).val()){
+      $('.icon-lock').addClass("next");
     } else {
-      document.querySelector('.icon-user').classList.remove('next');
+      $('.icon-lock').removeClass("next");
     }
-  });
+  }
+);
 
-  lastNameNextButton.addEventListener('click', function() {
-    if (lastNameInput.value) {
-      sessionStorage.setItem('lastName', lastNameInput.value);
-      document.querySelector('.last-name-section').classList.add('fold-up');
-      document.querySelector('.username-section').classList.remove('folded');
-    }
-  });
+$('.next-button').hover(
+  function(){
+    $(this).css('cursor', 'pointer');
+  }
+);
 
-  usernameInput.addEventListener('input', function() {
-    if (usernameInput.value) {
-      document.querySelector('.icon-user').classList.add('next');
+$('.next-button.password').click(
+  function(){
+    console.log("Something");
+    $('.password-section').addClass("fold-up");
+    $('.repeat-password-section').removeClass("folded");
+  }
+);
+
+$('.repeat-password').on("change keyup paste",
+  function(){
+    if($(this).val()){
+      $('.icon-repeat-lock').addClass("next");
     } else {
-      document.querySelector('.icon-user').classList.remove('next');
+      $('.icon-repeat-lock').removeClass("next");
     }
-  });
+  }
+);
 
-  usernameNextButton.addEventListener('click', function() {
-    if (usernameInput.value) {
-      sessionStorage.setItem('username', usernameInput.value);
-      document.querySelector('.username-section').classList.add('fold-up');
-      successMessage.style.display = 'flex';
-      setTimeout(function() {
-        successMessage.style.opacity = '1';
-      }, 100); // Delay showing success message for better UX
-    }
-  });
-});
+$('.next-button.repeat-password').click(
+  function(){
+    console.log("Something");
+    $('.repeat-password-section').addClass("fold-up");
+    $('.success').css("marginTop", 0);
+  }
+);
